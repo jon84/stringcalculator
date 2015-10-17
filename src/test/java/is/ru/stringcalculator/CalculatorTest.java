@@ -29,4 +29,15 @@ public class CalculatorTest {
     	assertEquals(6, Calculator.add("1,2,3"));
     }
 
+    @Test
+    public void testsOneOtherNumber(){
+    	assertEquals(4, Calculator.add("4"));
+    }
+
+    @Test
+    public void testsMultipleNumbers(){
+    	assertEquals(100, Calculator.add("10,20,30,40"));
+    }
+
+
 }
