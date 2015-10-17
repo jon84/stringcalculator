@@ -1,10 +1,15 @@
 package is.ru.stringcalculator;
 
+
+
 public class Calculator {
 
 	public static int add(String text){
 		if(text.equals("")){
 			return 0;
+		}
+		else if (text.contains("\n") && text.contains(",")) {
+			return sum(splitNumbers(text));
 		}
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
@@ -18,7 +23,8 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",");
+		if(numbers.contains("\n") && numbers.contains(",")) return numbers.split("\\W");
+	    else return numbers.split(",");
 	}
       
     private static int sum(String[] numbers){
@@ -28,6 +34,8 @@ public class Calculator {
 		}
 		return total;
     }
+
+
 
 
 
