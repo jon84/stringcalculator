@@ -40,8 +40,10 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testsNewline(){
-    	assertEquals(16, Calculator.add("2\n4,10"));
+    public void testsNewDelim(){
+    	assertEquals(3, Calculator.add("//;\n1;2"));
     }
+
+    
 
 }
