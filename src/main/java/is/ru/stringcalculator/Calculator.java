@@ -4,31 +4,25 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	public static int add(String text){
+	public static int add(String text) {
+		String delim = ",|\n";
+
+		if (text.startsWith("//")) {
+			delim = String.valueOf(text.charAt(2));
+			text = text.substring(text.indexOf("\n") + 1);
+		}
 		
-		if(text.equals("")){
+		if(text.equals("")) {
 			return 0;
 		}
-		else if (text.startsWith("//")){
-			String cutter = text.substring(text.indexOf('\n') + 1);
-			String delim = String.valueOf(text.charAt(2));
-			return sum(splitNumbers(cutter, delim));
+		else if (delim != ",|\n" || text.contains(",") || text.contains("\n")) {
+			return sum(splitNumbers(text, delim));
 		}
-		else if (text.contains("\n") && text.contains(",")) {
-			return sum(splitNumbers(text));
-		}
-		else if(text.contains(",")){
-			return sum(splitNumbers(text));
-		}
-
-			return toInt(text);
+		return toInt(text);
 	}
 
 	private static int toInt(String number){
 		return Integer.parseInt(number);
-	}
-	private static String[] splitNumbers(String numbers){
-			return numbers.split(",|\n");
 	}
 
 	private static String[] splitNumbers(String numbers, String breaker){
