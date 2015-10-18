@@ -28,9 +28,23 @@ public class Calculator {
 	private static String[] splitNumbers(String numbers, String breaker){
 	     return numbers.split(breaker);
 	}
+
+	private static String[] tooMuch(String[] numbers)
+	{
+		for(int i = 0; i < numbers.length; i++)
+		{
+			if(toInt(numbers[i]) > 1000)
+			{
+				numbers[i] = "0";
+			}
+		}
+
+		return numbers;
+	}
       
     private static int sum(String[] numbers){
 
+    	numbers = tooMuch(numbers);
  	    int total = 0;
  	  	Vector<String> Veccio = new Vector<String>();
         for(String number : numbers){

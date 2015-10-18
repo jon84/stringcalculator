@@ -57,4 +57,9 @@ public class CalculatorTest {
         Calculator.add("-1,2");
         }
 
-}
+    @Test
+    public void testsOverBigNumber(){
+        assertEquals(2, Calculator.add("1001,2"));
+    }
+
+}   
